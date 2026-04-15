@@ -2,6 +2,7 @@
 title: "Mitigating Learning Loss Through Parental Engagement: Evidence from an Intervention in Pakistan"
 authors:
 - me
+- Rony Rodríguez-Ramírez
 date: "2026-01-01T00:00:00Z"
 publishDate: "2026-01-01T00:00:00Z"
 
