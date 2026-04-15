@@ -16,9 +16,9 @@ sections:
         text: Download CV
         url: uploads/cv.pdf
       headings:
-        about: ' '
-        education: ' '
-        interests: ' '
+        about: ''
+        education: ''
+        interests: ''
     design:
       background:
         gradient_mesh:
