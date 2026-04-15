@@ -13,11 +13,20 @@ status:
   icon: ""
 role: PhD Candidate, Education Policy and Program Evaluation
 bio: |
-  I am a PhD candidate at the Harvard Graduate School of Education (HGSE),
-  concentrating in Education Policy and Program Evaluation. My research focuses
-  on the economics of education at the K-12 level in low- and middle-income
-  countries, with a particular emphasis on teacher professional development
-  programs and policies.
+  I am a PhD candidate in Education Policy and Program Evaluation (EPPE) at the
+  Harvard Graduate School of Education. My research applies the tools of applied
+  microeconomics to study education systems in low- and middle-income countries.
+  I am particularly interested in understanding how teacher professional
+  development programs and policies can improve teaching quality and student
+  learning outcomes at the K-12 level.
+
+  My current work examines teacher training interventions and school governance
+  reforms in Pakistan, using experimental and quasi-experimental methods to
+  identify what works, for whom, and why. I also study parental engagement
+  strategies in education and their effects on student achievement.
+
+  Prior to Harvard, I worked on education research and policy in South Asia.
+  I use Stata, R, and Python for empirical analysis.
 
 affiliations:
   - name: Harvard Graduate School of Education
