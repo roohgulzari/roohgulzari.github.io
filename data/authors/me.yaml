@@ -11,7 +11,7 @@ name:
 postnominals: []
 status:
   icon: ""
-role: PhD Candidate, Education Policy and Program Evaluation
+role: Harvard University
 bio: |
   I am a PhD candidate in Education Policy and Program Evaluation (EPPE) at the
   Harvard Graduate School of Education. My research applies the tools of applied
@@ -29,15 +29,7 @@ bio: |
   Pakistan. I hold a Master of Public Administration from Central European
   University and a B.Sc. in Mechanical Engineering from UET Lahore.
 
-affiliations:
-  - name: Harvard Graduate School of Education
-    url: https://www.gse.harvard.edu/
-  - name: Center for International Development (CID)
-    url: https://www.hks.harvard.edu/centers/cid
-  - name: Association for Education Finance and Policy (AEFP)
-    url: https://aefpweb.org/
-  - name: Center for Economic Research in Pakistan (CERP)
-    url: https://www.cerp.org.pk/
+affiliations: []
 
 links:
   - icon: at-symbol
