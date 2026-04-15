@@ -17,8 +17,8 @@ sections:
         url: uploads/cv.pdf
       headings:
         about: ' '
-        education: ''
-        interests: ''
+        education: ' '
+        interests: ' '
     design:
       background:
         gradient_mesh:

@@ -42,27 +42,9 @@ links:
   - icon: academicons/google-scholar
     url: https://scholar.google.com/citations?user=REPLACE_WITH_YOUR_ID
 
-interests:
-  - Economics of Education
-  - Teacher Professional Development
-  - K-12 Education in LMICs
-  - Program Evaluation
-  - Development Economics
+interests: []
 
-education:
-  - degree: PhD in Education (EPPE)
-    institution: Harvard University
-    start: 2022-09-01
-    summary: |
-      Concentration in Education Policy and Program Evaluation.
-  - degree: Master of Public Administration
-    institution: Central European University
-    start: 2017-09-01
-    end: 2019-06-30
-  - degree: B.Sc., Mechanical Engineering
-    institution: University of Engineering and Technology, Lahore
-    start: 2010-09-01
-    end: 2014-06-30
+education: []
 
 experience:
   - role: Research Assistant to Professor Eric Taylor
