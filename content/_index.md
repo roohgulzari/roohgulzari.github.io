@@ -29,24 +29,10 @@ sections:
         size: medium
         shape: circle
 
-  - block: markdown
-    id: jmp
-    content:
-      title: 'Job Market Paper'
-      subtitle: ''
-      text: |-
-        **[Your JMP Title Here: The Effect of Teacher Professional Development on Student Outcomes in Pakistan]**
-
-        *Abstract:* This paper examines... [Replace with your JMP abstract. Keep it to 3-4 sentences for the homepage. Link to the full paper below.]
-
-        [**Read Full Paper**](/publications/jmp/)
-    design:
-      columns: '1'
-
   - block: collection
     id: papers
     content:
-      title: Working Papers
+      title: Work in Progress
       filters:
         folders:
           - publications
@@ -70,7 +56,7 @@ sections:
       title: 'Contact'
       subtitle: ''
       text: |-
-        **Email:** [gulzari.roohullah@gmail.com](mailto:gulzari.roohullah@gmail.com)
+        **Email:** [rroohullah@g.harvard.edu](mailto:rroohullah@g.harvard.edu)
 
         **Address:** Harvard Graduate School of Education, Cambridge, MA
 

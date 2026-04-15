@@ -20,21 +20,28 @@ bio: |
   development programs and policies can improve teaching quality and student
   learning outcomes at the K-12 level.
 
-  My current work examines teacher training interventions and school governance
-  reforms in Pakistan, using experimental and quasi-experimental methods to
-  identify what works, for whom, and why. I also study parental engagement
-  strategies in education and their effects on student achievement.
+  My current work examines teacher training interventions, school governance
+  reforms, and parental engagement strategies in Pakistan, using experimental
+  and quasi-experimental methods to identify what works, for whom, and why.
 
-  Prior to Harvard, I worked on education research and policy in South Asia.
-  I use Stata, R, and Python for empirical analysis.
+  Before Harvard, I managed large-scale education research at CERP Pakistan
+  with Professor Asim Khwaja and worked on education campaigns and M&E across
+  Pakistan. I hold a Master of Public Administration from Central European
+  University and a B.Sc. in Mechanical Engineering from UET Lahore.
 
 affiliations:
   - name: Harvard Graduate School of Education
     url: https://www.gse.harvard.edu/
+  - name: Center for International Development (CID)
+    url: https://www.hks.harvard.edu/centers/cid
+  - name: Association for Education Finance and Policy (AEFP)
+    url: https://aefpweb.org/
+  - name: Center for Economic Research in Pakistan (CERP)
+    url: https://www.cerp.org.pk/
 
 links:
   - icon: at-symbol
-    url: mailto:gulzari.roohullah@gmail.com
+    url: mailto:rroohullah@g.harvard.edu
     label: E-mail Me
   - icon: brands/github
     url: https://github.com/roohgulzari
@@ -52,27 +59,80 @@ interests:
 
 education:
   - degree: PhD in Education (EPPE)
-    institution: Harvard Graduate School of Education
+    institution: Harvard University
     start: 2022-09-01
     summary: |
-      Concentration in Education Policy and Program Evaluation. Research focuses on economics of education in low- and middle-income countries.
-  # TODO: Add your prior degrees below. Example:
-  # - degree: MA in Economics
-  #   institution: University Name
-  #   start: 2018-09-01
-  #   end: 2020-06-30
+      Concentration in Education Policy and Program Evaluation.
+  - degree: Master of Public Administration
+    institution: Central European University
+    start: 2017-09-01
+    end: 2019-06-30
+  - degree: B.Sc., Mechanical Engineering
+    institution: University of Engineering and Technology, Lahore
+    start: 2010-09-01
+    end: 2014-06-30
 
-experience: []
-  # TODO: Add your work experience. Example:
-  # - role: Research Assistant
-  #   org: Harvard HGSE
-  #   start: 2022-09-01
-  #   summary: |
-  #     Description of role.
+experience:
+  - role: Research Assistant to Professor Eric Taylor
+    org: Harvard University
+    start: 2024-01-01
+  - role: Research Manager to Professor Asim Khwaja
+    org: CERP Pakistan
+    start: 2019-01-01
+    end: 2022-08-31
+  - role: Research Consultant
+    org: Artis International
+    start: 2018-01-01
+    end: 2019-06-30
+  - role: Regional Campaign Coordinator
+    org: Alif Ailaan (DFID)
+    start: 2016-01-01
+    end: 2017-12-31
+  - role: Monitoring and Evaluation Officer
+    org: Youth Development Foundation, Pakistan
+    start: 2014-07-01
+    end: 2016-12-31
 
-awards: []
-  # TODO: Add any awards or fellowships. Example:
-  # - title: Fellowship Name
-  #   awarder: Organization
-  #   date: "2022-09-01"
-  #   summary: Description.
+awards:
+  - title: Doctoral Research Grant
+    awarder: Harvard Graduate School of Education
+    date: "2025-01-01"
+    summary: "$3,000"
+  - title: Summer Research Grant
+    awarder: Lakshmi Mittal and Family South Asia Institute
+    date: "2024-06-01"
+    summary: "$3,000"
+  - title: Summer Internship Grant
+    awarder: Open Society Foundations (OSF)
+    date: "2018-06-01"
+    summary: "$10,000"
+  - title: Young Connectors of the Future Award
+    awarder: Swedish Institute, Stockholm
+    date: "2016-01-01"
+  - title: Alumni Small Grant
+    awarder: Pakistan-U.S. Alumni Network (PUAN)
+    date: "2015-01-01"
+    summary: "$5,000"
+  - title: Emerging Leaders of Pakistan Fellow
+    awarder: Atlantic Council, South Asia Center, Washington D.C.
+    date: "2013-01-01"
+
+languages:
+  - name: Urdu
+    level: 5
+    label: Native
+  - name: Dari
+    level: 5
+    label: Native
+  - name: English
+    level: 5
+    label: Fluent
+  - name: Persian
+    level: 4
+    label: Fluent
+  - name: Hindi
+    level: 3
+    label: Intermediate
+  - name: Punjabi
+    level: 3
+    label: Intermediate

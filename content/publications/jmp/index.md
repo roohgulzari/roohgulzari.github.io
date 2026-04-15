@@ -1,34 +1,27 @@
 ---
-title: "Your Job Market Paper Title Here"
+title: "Effective Teaching Through Reflective Learning: Impact Evaluation of a Teacher Professional Development Intervention in Pakistan"
 authors:
 - me
 date: "2026-01-01T00:00:00Z"
 publishDate: "2026-01-01T00:00:00Z"
 
-# Publication type from CSL standard
 publication_types: ["article"]
 
 publication: ""
 publication_short: ""
 
-abstract: "Replace this with your JMP abstract. This paper examines the impact of teacher professional development programs on student learning outcomes in low- and middle-income countries. Using data from [country], we employ [methodology] to estimate the causal effects of [intervention] on [outcomes]. Our findings suggest that..."
+abstract: ""
 
-summary: "Replace with a 1-2 sentence summary of your JMP for the homepage listing."
+summary: "This paper evaluates the impact of a teacher professional development intervention based on reflective learning practices on teaching quality and student outcomes in Pakistan."
 
 tags:
-- Economics of Education
 - Teacher Professional Development
+- Economics of Education
 - LMICs
 
-featured: true
+featured: false
 
 links: []
-# Uncomment and update when you have files ready:
-# - type: pdf
-#   url: uploads/jmp.pdf
-# - type: custom
-#   label: Appendix
-#   url: uploads/jmp-appendix.pdf
 
 image:
   focal_point: ""
@@ -38,4 +31,4 @@ projects: []
 slides: ""
 ---
 
-Replace this with the full text or supplementary notes for your Job Market Paper.
+*Work in progress.*

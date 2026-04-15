@@ -68,3 +68,9 @@ Desktop.ini
 *.log
 npm-debug.log*
 .claude/
+
+# ============================================================================
+# Source Files (originals kept locally, not deployed)
+# ============================================================================
+
+source_files/

@@ -1,24 +1,15 @@
 ---
 title: Teaching
-summary: Courses taught and teaching experience at Harvard HGSE.
+summary: Teaching experience at Harvard Graduate School of Education.
 ---
 
-## Harvard Graduate School of Education
+## Teaching Fellow, Harvard Graduate School of Education
 
-### Teaching Fellow
-<!-- TODO: Replace with your actual teaching experience -->
-
-- **Course Name (e.g., A-100: Economics of Education)** — Semester Year
-  - Brief description of your role and the course content.
-
-- **Course Name (e.g., S-040: Quantitative Methods)** — Semester Year
-  - Brief description of your role and the course content.
-
-### Guest Lectures
-<!-- TODO: Add any guest lectures -->
-
-- Topic, Course, Date
-
----
-
-*Please update this page with your actual teaching experience.*
+| Course | Semester |
+|---|---|
+| **S290: Causal Inference** | Spring 2025 |
+| **EPA PCE: Education Policy and Analysis** | Fall 2023, 2024, 2025 |
+| **EVI101: Evidence** | Summer 2024, 2025 |
+| **S043: Multilevel and Longitudinal Models** | Fall 2024 |
+| **S061: Statistical and Psychometric Measurement** | Spring 2024 |
+| **S843: Improving Learning in Low- and Middle-Income Countries** | Fall 2023 |

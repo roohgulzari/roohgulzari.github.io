@@ -1,5 +1,5 @@
 ---
-title: "Mitigating Learning Loss Through Parental Engagement: Evidence from an Intervention in Pakistan"
+title: "School Reconfiguration Policies and Their Impact on Student Learning Outcomes: Evidence from Pakistan"
 authors:
 - me
 date: "2026-01-01T00:00:00Z"
@@ -12,7 +12,7 @@ publication_short: ""
 
 abstract: ""
 
-summary: "This paper studies the effects of a parental engagement intervention on mitigating learning loss in Pakistan."
+summary: "This paper examines the effects of school reconfiguration policies on student learning outcomes in Pakistan."
 
 tags:
 - Economics of Education
