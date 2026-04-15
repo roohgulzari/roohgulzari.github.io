@@ -1,0 +1,69 @@
+schema: hugoblox/author/v1
+slug: me
+is_owner: true
+name:
+  display: Roohullah Gulzari
+  given: Roohullah
+  family: Gulzari
+  alternate: ''
+  pronunciation: ''
+  pronouns: ''
+postnominals: []
+status:
+  icon: ""
+role: PhD Candidate, Education Policy and Program Evaluation
+bio: |
+  I am a PhD candidate at the Harvard Graduate School of Education (HGSE),
+  concentrating in Education Policy and Program Evaluation. My research focuses
+  on the economics of education at the K-12 level in low- and middle-income
+  countries, with a particular emphasis on teacher professional development
+  programs and policies.
+
+affiliations:
+  - name: Harvard Graduate School of Education
+    url: https://www.gse.harvard.edu/
+
+links:
+  - icon: at-symbol
+    url: mailto:gulzari.roohullah@gmail.com
+    label: E-mail Me
+  - icon: brands/github
+    url: https://github.com/roohgulzari
+  - icon: brands/linkedin
+    url: https://www.linkedin.com/in/roohgulzari/
+  - icon: academicons/google-scholar
+    url: https://scholar.google.com/citations?user=REPLACE_WITH_YOUR_ID
+
+interests:
+  - Economics of Education
+  - Teacher Professional Development
+  - K-12 Education in LMICs
+  - Program Evaluation
+  - Development Economics
+
+education:
+  - degree: PhD in Education (EPPE)
+    institution: Harvard Graduate School of Education
+    start: 2022-09-01
+    summary: |
+      Concentration in Education Policy and Program Evaluation. Research focuses on economics of education in low- and middle-income countries.
+  # TODO: Add your prior degrees below. Example:
+  # - degree: MA in Economics
+  #   institution: University Name
+  #   start: 2018-09-01
+  #   end: 2020-06-30
+
+experience: []
+  # TODO: Add your work experience. Example:
+  # - role: Research Assistant
+  #   org: Harvard HGSE
+  #   start: 2022-09-01
+  #   summary: |
+  #     Description of role.
+
+awards: []
+  # TODO: Add any awards or fellowships. Example:
+  # - title: Fellowship Name
+  #   awarder: Organization
+  #   date: "2022-09-01"
+  #   summary: Description.
