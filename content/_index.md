@@ -133,6 +133,4 @@ sections:
             [LinkedIn ↗](https://www.linkedin.com/in/roohullah-gulzari)
         - h: 'Mentoring'
           body: 'Open to chatting with students from Pakistan considering a PhD in economics or education.'
-        - h: 'Press & speaking'
-          body: ''
 ---
