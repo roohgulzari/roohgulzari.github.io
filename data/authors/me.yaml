@@ -67,29 +67,7 @@ experience:
     start: 2014-07-01
     end: 2016-12-31
 
-awards:
-  - title: Doctoral Research Grant
-    awarder: Harvard Graduate School of Education
-    date: "2025-01-01"
-    summary: "$3,000"
-  - title: Summer Research Grant
-    awarder: Lakshmi Mittal and Family South Asia Institute
-    date: "2024-06-01"
-    summary: "$3,000"
-  - title: Summer Internship Grant
-    awarder: Open Society Foundations (OSF)
-    date: "2018-06-01"
-    summary: "$10,000"
-  - title: Young Connectors of the Future Award
-    awarder: Swedish Institute, Stockholm
-    date: "2016-01-01"
-  - title: Alumni Small Grant
-    awarder: Pakistan-U.S. Alumni Network (PUAN)
-    date: "2015-01-01"
-    summary: "$5,000"
-  - title: Emerging Leaders of Pakistan Fellow
-    awarder: Atlantic Council, South Asia Center, Washington D.C.
-    date: "2013-01-01"
+awards: []
 
 languages:
   - name: Urdu

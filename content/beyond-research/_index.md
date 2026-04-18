@@ -11,16 +11,6 @@ sections:
       heading: 'Work that lives *outside* the journal page.'
       lede: |
         A selection of conference talks, learning platforms I've helped design, and recognitions from along the way. Some of this sits adjacent to the research; some of it was how I learned the questions I now study.
-      stats:
-        - n: '12'
-          sup: '+'
-          lbl: 'Conference talks'
-        - n: '1'
-          lbl: 'TED Talk'
-        - n: '4'
-          lbl: 'Learning platforms'
-        - n: '6'
-          lbl: 'Awards & honors'
 
   - block: beyond-items
     content:
@@ -46,7 +36,7 @@ sections:
           year_range: '2019 — 2024'
         - kind: 'award'
           prefix: 'A'
-          label_html: 'Awards & *honors*'
+          label_html: '*Awards*'
           source: 'author_awards'
           year_range: '2013 — 2025'
 ---

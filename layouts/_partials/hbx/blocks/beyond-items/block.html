@@ -109,12 +109,12 @@
         {{ $label := index . "label_html" | default "" }}
         {{ $range := index . "year_range" | default "" }}
         {{ $items := index . "_items" }}
-        {{ if $items }}
-          <div class="group-label">
-            <span class="l">{{ $label | $page.RenderString (dict "display" "inline") }}</span>
-            <span class="n">{{ len $items }} items{{ with $range }} · {{ . }}{{ end }}</span>
-          </div>
+        <div class="group-label">
+          <span class="l">{{ $label | $page.RenderString (dict "display" "inline") }}</span>
+          <span class="n">{{ if $items }}{{ len $items }} items{{ else }}Coming soon{{ end }}{{ with $range }} · {{ . }}{{ end }}</span>
+        </div>
 
+        {{ if $items }}
           {{ range $i, $it := $items }}
             {{ $title := index $it "title" | default "" }}
             {{ $url := index $it "url" | default "" }}
