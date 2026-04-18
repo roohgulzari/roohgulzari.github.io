@@ -146,9 +146,7 @@
             <div class="pub-index">P / {{ printf "%02d" (add $i 1) }}</div>
 
             <div class="pub-body">
-              <h3>
-                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-              </h3>
+              <h3>{{ .Title }}</h3>
 
               {{ with .Params.authors }}
                 <p class="pub-authors">
