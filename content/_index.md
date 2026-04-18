@@ -122,7 +122,7 @@ sections:
       heading: 'Get in touch.'
       lead: 'Email is the best way to reach me — [rroohullah@g.harvard.edu](mailto:rroohullah@g.harvard.edu)'
       cells:
-        - h: 'Office'
+        - h: 'Address'
           body: |
             Harvard Graduate School of Education  
             Cambridge, MA 02138
@@ -130,7 +130,7 @@ sections:
           body: |
             [GitHub ↗](https://github.com/roohgulzari)  
             [Google Scholar](#)  
-            [ORCID](#)
+            [LinkedIn ↗](https://www.linkedin.com/in/roohullah-gulzari)
         - h: 'Mentoring'
           body: 'Open to chatting with students from Pakistan considering a PhD in economics or education.'
         - h: 'Press & speaking'
