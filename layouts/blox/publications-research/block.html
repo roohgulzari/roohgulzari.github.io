@@ -1,0 +1,206 @@
+{{/*
+  publications-research — editorial research list.
+
+  Renders papers from `filters.folders` (default: ["publications"]) as a
+  grid of `.pub` cards with chip filters above. Chip filtering is wired
+  client-side against `data-tags` on each `.pub`.
+
+  content (front matter):
+    num:       section number label (e.g. "02 / Research")
+    heading:   serif H2
+    subtitle:  optional body copy under the count line
+    count_suffix: appended after "<n> papers" (e.g. "· 2026")
+    filters:
+      folders: ["publications", ...]       (defaults to "publications")
+      featured_only: false
+    chips:
+      - label: All                          (key "all" selects everything)
+      - label: Job-market
+        tag: "Job-market paper"             (matches .extras.featured_tag or any tag)
+      - label: Teacher PD
+        tag: "Teacher PD"
+
+  Each publication's front matter may include:
+    extras:
+      status:       "In progress" | "Working paper" | "Draft"
+      status_kind:  "active" | "draft"       (colours the status dot)
+      featured_tag: "Job-market paper"        (crimson tag shown first)
+      display_tags: ["RCT", "Pakistan"]        (overrides `tags` for display)
+      actions:
+        - label: "Draft"
+          arrow: "PDF →"
+          url:   "/uploads/paper.pdf"
+
+  Tokens used: --ink, --muted, --crimson, --rule, etc (defined in custom.scss).
+*/}}
+
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+{{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+
+{{ $num := index $content "num" | default "02 / Research" }}
+{{ $heading := index $content "heading" | default "Working papers & current projects." }}
+{{ $subtitle := index $content "subtitle" | default "" }}
+{{ $countSuffix := index $content "count_suffix" | default "" }}
+
+{{ $filters := index $content "filters" }}
+{{ if not (reflect.IsMap $filters) }}{{ $filters = dict }}{{ end }}
+{{ $folders := index $filters "folders" }}
+{{ if not (reflect.IsSlice $folders) }}{{ $folders = slice "publications" }}{{ end }}
+{{ $featuredOnly := index $filters "featured_only" | default false }}
+
+{{ $chips := index $content "chips" }}
+{{ if not (reflect.IsSlice $chips) }}{{ $chips = slice }}{{ end }}
+
+{{/* Identify owner slug for author bolding */}}
+{{ $ownerSlug := "me" }}
+
+{{/* Collect publications: iterate pages in each listed folder */}}
+{{ $pubs := slice }}
+{{ range $folder := $folders }}
+  {{ $section := site.GetPage (printf "/%s" $folder) }}
+  {{ with $section }}
+    {{ range .Pages }}
+      {{ if or (not $featuredOnly) (.Params.featured) }}
+        {{ $pubs = $pubs | append . }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ $pubs = sort $pubs ".Date" "desc" }}
+{{ $pubCount := len $pubs }}
+
+<div class="rgx-scope">
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num">{{ $num }}</span>
+        <h2>{{ $heading }}</h2>
+      </div>
+
+      <div class="pub-head">
+        <div>
+          <div class="count-line">
+            {{ $pubCount }} paper{{ if ne $pubCount 1 }}s{{ end }}{{ with $countSuffix }} {{ . }}{{ end }}
+          </div>
+          {{ with $subtitle }}<p class="sub">{{ . }}</p>{{ end }}
+        </div>
+
+        {{ if $chips }}
+          <div class="filters">
+            {{ range $i, $chip := $chips }}
+              {{ $label := index $chip "label" | default "" }}
+              {{ $tag := index $chip "tag" | default "" }}
+              {{/* Count matches: a chip with no tag (or tag "all") matches everything. */}}
+              {{ $isAll := or (not $tag) (eq (lower $tag) "all") }}
+              {{ $n := 0 }}
+              {{ if $isAll }}
+                {{ $n = $pubCount }}
+              {{ else }}
+                {{ range $pubs }}
+                  {{ $p := .Params }}
+                  {{ $ex := index $p "extras" }}
+                  {{ if not (reflect.IsMap $ex) }}{{ $ex = dict }}{{ end }}
+                  {{ $featured := index $ex "featured_tag" | default "" }}
+                  {{ $dTags := index $ex "display_tags" }}
+                  {{ if not (reflect.IsSlice $dTags) }}{{ $dTags = .Params.tags | default (slice) }}{{ end }}
+                  {{ $hit := false }}
+                  {{ if eq $featured $tag }}{{ $hit = true }}{{ end }}
+                  {{ range $dTags }}
+                    {{ if eq . $tag }}{{ $hit = true }}{{ end }}
+                  {{ end }}
+                  {{ if $hit }}{{ $n = add $n 1 }}{{ end }}
+                {{ end }}
+              {{ end }}
+              <button
+                type="button"
+                class="chip{{ if eq $i 0 }} active{{ end }}"
+                data-filter="{{ if $isAll }}all{{ else }}{{ $tag }}{{ end }}"
+              >{{ $label }} <span class="count">{{ $n }}</span></button>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+
+      <div class="pub-list">
+        {{ range $i, $pub := $pubs }}
+          {{ $p := .Params }}
+          {{ $ex := index $p "extras" }}
+          {{ if not (reflect.IsMap $ex) }}{{ $ex = dict }}{{ end }}
+
+          {{ $status := index $ex "status" | default "Working paper" }}
+          {{ $statusKind := index $ex "status_kind" | default "active" }}
+          {{ $featuredTag := index $ex "featured_tag" | default "" }}
+          {{ $displayTags := index $ex "display_tags" }}
+          {{ if not (reflect.IsSlice $displayTags) }}{{ $displayTags = .Params.tags | default (slice) }}{{ end }}
+          {{ $actions := index $ex "actions" }}
+          {{ if not (reflect.IsSlice $actions) }}{{ $actions = slice }}{{ end }}
+
+          {{/* Collect tag keys for data-tags attribute (used by chip filter JS) */}}
+          {{ $tagKeys := slice }}
+          {{ with $featuredTag }}{{ $tagKeys = $tagKeys | append . }}{{ end }}
+          {{ range $displayTags }}{{ $tagKeys = $tagKeys | append . }}{{ end }}
+
+          <article class="pub" data-tags="{{ delimit $tagKeys "|" }}">
+            <div class="pub-index">P / {{ printf "%02d" (add $i 1) }}</div>
+
+            <div class="pub-body">
+              <h3>
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              </h3>
+
+              {{ with .Params.authors }}
+                <p class="pub-authors">
+                  {{ $last := sub (len .) 1 }}
+                  {{ range $ai, $a := . }}
+                    {{ $name := $a }}
+                    {{ $isOwner := false }}
+                    {{ if eq (lower $a) $ownerSlug }}
+                      {{ $prof := partial "functions/get_author_profile" $a }}
+                      {{ with $prof.title }}{{ $name = . }}{{ end }}
+                      {{ $isOwner = true }}
+                    {{ end }}
+                    {{ if $isOwner }}<b>{{ $name }}</b>{{ else }}{{ $name }}{{ end }}{{ if lt $ai $last }}, {{ end }}
+                  {{ end }}
+                </p>
+              {{ end }}
+
+              {{ with .Params.summary }}
+                <p class="pub-summary">{{ . }}</p>
+              {{ end }}
+
+              {{ if or $featuredTag $displayTags }}
+                <div class="pub-tags">
+                  {{ with $featuredTag }}<span class="tag crimson">{{ . }}</span>{{ end }}
+                  {{ range $displayTags }}<span class="tag">{{ . }}</span>{{ end }}
+                </div>
+              {{ end }}
+            </div>
+
+            <aside class="pub-meta">
+              <span class="status{{ if eq $statusKind "draft" }} draft{{ end }}">
+                <span class="dot"></span>{{ $status }}
+              </span>
+              <span class="year">{{ .Date.Year }}</span>
+              {{ if $actions }}
+                <div class="actions">
+                  {{ range $actions }}
+                    {{ $label := index . "label" | default "" }}
+                    {{ $arrow := index . "arrow" | default "" }}
+                    {{ $url := index . "url" | default "#" }}
+                    {{ $target := "" }}
+                    {{ if hasSuffix (lower $url) ".pdf" }}
+                      {{ $target = " target=\"_blank\" rel=\"noopener\"" }}
+                    {{ end }}
+                    <a href="{{ $url | relURL }}"{{ $target | safeHTMLAttr }}>{{ $label }} <span class="arr">{{ $arrow }}</span></a>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </aside>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>

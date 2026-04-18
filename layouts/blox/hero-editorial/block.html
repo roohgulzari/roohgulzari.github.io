@@ -1,0 +1,110 @@
+{{/*
+  hero-editorial — custom Hugo Blox block for the redesign.
+
+  Left column: 3:4 portrait from assets/media/authors/<username>.*.
+  Right column: mono kicker, serif display H1 (given/family split),
+  affiliation line, markdown summary (italic emphasis becomes serif),
+  two actions (primary/ghost buttons), and a mono metabar with stats.
+
+  content (front matter):
+    username:      author slug for get_author_profile (default: "me")
+    kicker:        mono crimson kicker text
+    role:          line 1 of affline (default: "PhD Candidate")
+    organization:  bold part of affline (default: identity.organization)
+    summary:       markdown-enabled paragraph; use *emphasis* for serif italic
+    actions:       list of { text, url, style: primary|ghost, arrow }
+    metabar:       list of { label, value }
+*/}}
+
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+{{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+
+{{ $username := index $content "username" | default "me" }}
+{{ $profile := partial "functions/get_author_profile" $username }}
+
+{{ $kicker := index $content "kicker" | default "Education Policy & Program Evaluation" }}
+{{ $role := index $content "role" | default "PhD Candidate" }}
+{{ $organization := index $content "organization" | default site.Params.hugoblox.identity.organization }}
+{{ $summary := index $content "summary" | default "" }}
+{{ $actions := index $content "actions" }}
+{{ if not (reflect.IsSlice $actions) }}{{ $actions = slice }}{{ end }}
+{{ $metabar := index $content "metabar" }}
+{{ if not (reflect.IsSlice $metabar) }}{{ $metabar = slice }}{{ end }}
+
+{{ $given := $profile.name_given | default $profile.title }}
+{{ $family := $profile.name_family }}
+{{ $avatar := $profile.avatar }}
+
+<div class="rgx-scope">
+  <section class="hero">
+    <div class="portrait" aria-hidden="{{ if not $avatar }}true{{ else }}false{{ end }}">
+      {{ if $avatar }}
+        {{ $canProcess := and (reflect.IsImageResourceProcessable $avatar) (ne $avatar.MediaType.SubType "gif") }}
+        {{ if $canProcess }}
+          {{ $img := $avatar.Fill "900x1200 Center" }}
+          <img
+            class="portrait__img"
+            src="{{ $img.RelPermalink }}"
+            width="{{ $img.Width }}"
+            height="{{ $img.Height }}"
+            alt="{{ $profile.title }}"
+            loading="eager"
+            fetchpriority="high" />
+        {{ else }}
+          <img class="portrait__img" src="{{ $avatar.RelPermalink }}" alt="{{ $profile.title }}" />
+        {{ end }}
+      {{ else }}
+        <div class="frame">
+          <span>Portrait · 3:4</span>
+          <span>editorial b/w</span>
+        </div>
+      {{ end }}
+    </div>
+
+    <div class="body">
+      <div class="inner">
+        {{ with $kicker }}<div class="kicker">{{ . }}</div>{{ end }}
+
+        <h1>
+          {{ $given }}{{ with $family }}<br />{{ . }}{{ end }}
+        </h1>
+
+        <p class="affline">
+          {{ $role }}{{ if $organization }} · <b>{{ $organization }}</b>{{ end }}
+        </p>
+
+        {{ with $summary }}
+          <div class="summary">{{ . | $page.RenderString }}</div>
+        {{ end }}
+
+        {{ if $actions }}
+          <div class="actions">
+            {{ range $actions }}
+              {{ $text := index . "text" | default "" }}
+              {{ $url := index . "url" | default "#" }}
+              {{ $style := index . "style" | default "primary" }}
+              {{ $arrow := index . "arrow" | default "" }}
+              {{ $target := "" }}
+              {{ if hasSuffix (lower $url) ".pdf" }}
+                {{ $target = " target=\"_blank\" rel=\"noopener\"" }}
+              {{ end }}
+              <a class="btn btn-{{ $style }}" href="{{ $url | relURL }}"{{ $target | safeHTMLAttr }}>
+                {{ $text }}{{ with $arrow }} <span class="arr">{{ . }}</span>{{ end }}
+              </a>
+            {{ end }}
+          </div>
+        {{ end }}
+
+        {{ if $metabar }}
+          <div class="metabar">
+            {{ range $metabar }}
+              <span>{{ .label }} <b>{{ .value }}</b></span>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+</div>

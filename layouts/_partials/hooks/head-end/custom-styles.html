@@ -1,0 +1,19 @@
+{{/*
+  Custom fonts + compiled SCSS for the site redesign.
+  - Loads Instrument Serif / Inter / JetBrains Mono from Google Fonts.
+  - Pipes assets/scss/custom.scss through dart-sass, minifies, fingerprints,
+    and emits a <link rel="stylesheet">.
+*/}}
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+  rel="stylesheet"
+/>
+
+{{ with resources.Get "scss/custom.scss" }}
+  {{ $opts := dict "transpiler" "dartsass" "outputStyle" "compressed" "enableSourceMap" false }}
+  {{ $css := . | toCSS $opts | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
+{{ end }}

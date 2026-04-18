@@ -1,0 +1,191 @@
+{{/*
+  beyond-items — filter bar + grouped items list for the Beyond Research page.
+
+  content (front matter):
+    chips:    list of { label, key } — chip buttons; key matches data-kind on each .item
+    groups:   list of { kind, prefix, label_html, source, year_range }
+              - kind:        "talk" | "platform" | "award" (sets kind dot colour)
+              - prefix:      per-item index letter (e.g. "T", "P", "A")
+              - label_html:  markdown rendered in .group-label .l  (use *em* for crimson)
+              - source:      "data.beyond.talks.items"
+                             "data.beyond.platforms.items"
+                             "author_awards"   (pulls from data/authors/me.yaml)
+              - year_range:  optional "2018 — 2025" shown in .group-label .n
+
+  Each data item schema:
+    title, role, desc, year, where, where_sub
+    tags: [{ label, crimson }]
+    media: { overlay, overlay_crimson, play, placeholder, image }
+    actions: [{ label, arrow, url }]
+    url: (optional) wraps the <h3> title
+*/}}
+
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+{{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+
+{{ $chips := index $content "chips" }}
+{{ if not (reflect.IsSlice $chips) }}{{ $chips = slice }}{{ end }}
+{{ $groups := index $content "groups" }}
+{{ if not (reflect.IsSlice $groups) }}{{ $groups = slice }}{{ end }}
+
+{{/* Resolve each group's items upfront so we can count chip matches. */}}
+{{ $resolvedGroups := slice }}
+{{ $ownerAwards := slice }}
+{{ $prof := partial "functions/get_author_profile" "me" }}
+{{ with $prof }}
+  {{ with .awards }}{{ $ownerAwards = . }}{{ end }}
+{{ end }}
+
+{{ range $groups }}
+  {{ $src := index . "source" | default "" }}
+  {{ $items := slice }}
+  {{ if eq $src "data.beyond.talks.items" }}
+    {{ with site.Data.beyond.talks.items }}{{ $items = . }}{{ end }}
+  {{ else if eq $src "data.beyond.platforms.items" }}
+    {{ with site.Data.beyond.platforms.items }}{{ $items = . }}{{ end }}
+  {{ else if eq $src "author_awards" }}
+    {{ range $ownerAwards }}
+      {{/* Normalise author-yaml award shape to item shape */}}
+      {{ $year := "" }}
+      {{ with .date }}{{ $year = substr (string .) 0 4 }}{{ end }}
+      {{ $item := dict
+        "title" .title
+        "role" (printf "**%s**" (.awarder | default ""))
+        "desc" (.summary | default "")
+        "year" $year
+        "where" (.awarder | default "")
+        "media" (dict "overlay" "Honor" "placeholder" "Certificate / emblem")
+      }}
+      {{ $items = $items | append $item }}
+    {{ end }}
+  {{ end }}
+  {{ $g := merge . (dict "_items" $items) }}
+  {{ $resolvedGroups = $resolvedGroups | append $g }}
+{{ end }}
+
+{{/* Total counts by kind (for chip labels). */}}
+{{ $totals := dict "all" 0 }}
+{{ range $resolvedGroups }}
+  {{ $kind := index . "kind" | default "" }}
+  {{ $n := len (index . "_items") }}
+  {{ $totals = merge $totals (dict "all" (add (index $totals "all") $n)) }}
+  {{ $totals = merge $totals (dict $kind (add (index $totals $kind | default 0) $n)) }}
+{{ end }}
+
+<div class="rgx-scope">
+  {{ if $chips }}
+    <div class="filterbar">
+      <div class="wrap">
+        <div class="row">
+          <div class="filters">
+            {{ range $i, $chip := $chips }}
+              {{ $label := index $chip "label" | default "" }}
+              {{ $key := index $chip "key" | default "all" }}
+              {{ $n := index $totals $key | default 0 }}
+              <button
+                type="button"
+                class="chip{{ if eq $i 0 }} active{{ end }}"
+                data-filter="{{ $key }}"
+              >{{ $label }} <span class="count">{{ $n }}</span></button>
+            {{ end }}
+          </div>
+          <div class="view" aria-hidden="true">
+            <span>View</span>
+            <a class="active">Editorial</a>
+            <a>Index</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{ end }}
+
+  <section class="items">
+    <div class="wrap">
+      {{ range $resolvedGroups }}
+        {{ $kind := index . "kind" | default "" }}
+        {{ $prefix := index . "prefix" | default "X" }}
+        {{ $label := index . "label_html" | default "" }}
+        {{ $range := index . "year_range" | default "" }}
+        {{ $items := index . "_items" }}
+        {{ if $items }}
+          <div class="group-label">
+            <span class="l">{{ $label | $page.RenderString (dict "display" "inline") }}</span>
+            <span class="n">{{ len $items }} items{{ with $range }} · {{ . }}{{ end }}</span>
+          </div>
+
+          {{ range $i, $it := $items }}
+            {{ $title := index $it "title" | default "" }}
+            {{ $url := index $it "url" | default "" }}
+            {{ $role := index $it "role" | default "" }}
+            {{ $desc := index $it "desc" | default "" }}
+            {{ $year := index $it "year" | default "" }}
+            {{ $where := index $it "where" | default "" }}
+            {{ $whereSub := index $it "where_sub" | default "" }}
+            {{ $tags := index $it "tags" }}
+            {{ if not (reflect.IsSlice $tags) }}{{ $tags = slice }}{{ end }}
+            {{ $media := index $it "media" }}
+            {{ if not (reflect.IsMap $media) }}{{ $media = dict }}{{ end }}
+            {{ $actions := index $it "actions" }}
+            {{ if not (reflect.IsSlice $actions) }}{{ $actions = slice }}{{ end }}
+
+            {{ $overlay := index $media "overlay" | default "" }}
+            {{ $overlayCrimson := index $media "overlay_crimson" | default false }}
+            {{ $playIcon := index $media "play" | default false }}
+            {{ $placeholder := index $media "placeholder" | default "" }}
+            {{ $image := index $media "image" | default "" }}
+
+            <article class="item" data-kind="{{ $kind }}">
+              <div class="item-index">{{ $prefix }} / {{ printf "%02d" (add $i 1) }}</div>
+
+              <div class="item-media">
+                {{ with $image }}<img src="{{ . | relURL }}" alt="" loading="lazy" />{{ end }}
+                {{ with $overlay }}<span class="tag-overlay{{ if $overlayCrimson }} crimson{{ end }}">{{ . }}</span>{{ end }}
+                {{ if $playIcon }}<div class="play"></div>{{ end }}
+                {{ with $placeholder }}<span class="ph">{{ . }}</span>{{ end }}
+              </div>
+
+              <div class="item-body">
+                <h3>
+                  {{ if $url }}<a href="{{ $url | relURL }}">{{ $title }}</a>{{ else }}<a>{{ $title }}</a>{{ end }}
+                </h3>
+                {{ with $role }}<p class="role">{{ . | $page.RenderString (dict "display" "inline") }}</p>{{ end }}
+                {{ with $desc }}<p class="desc">{{ . | $page.RenderString (dict "display" "inline") }}</p>{{ end }}
+                {{ if $tags }}
+                  <div class="tags">
+                    {{ range $tags }}
+                      <span class="mini-tag{{ if .crimson }} crimson{{ end }}">{{ .label }}</span>
+                    {{ end }}
+                  </div>
+                {{ end }}
+              </div>
+
+              <aside class="item-meta">
+                <span class="kind{{ if $kind }} {{ $kind }}{{ end }}">
+                  <span class="dot"></span>{{ title $kind }}
+                </span>
+                {{ with $year }}<span class="year">{{ . }}</span>{{ end }}
+                {{ if or $where $whereSub }}
+                  <span class="where">{{ $where }}{{ with $whereSub }}<br /><span>{{ . }}</span>{{ end }}</span>
+                {{ end }}
+                {{ if $actions }}
+                  <div class="actions">
+                    {{ range $actions }}
+                      {{ $al := index . "label" | default "" }}
+                      {{ $aa := index . "arrow" | default "" }}
+                      {{ $au := index . "url" | default "#" }}
+                      {{ $target := "" }}
+                      {{ if hasSuffix (lower $au) ".pdf" }}{{ $target = " target=\"_blank\" rel=\"noopener\"" }}{{ end }}
+                      <a href="{{ $au | relURL }}"{{ $target | safeHTMLAttr }}>{{ $al }} <span class="arr">{{ $aa }}</span></a>
+                    {{ end }}
+                  </div>
+                {{ end }}
+              </aside>
+            </article>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </section>
+</div>

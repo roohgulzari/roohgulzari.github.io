@@ -1,0 +1,63 @@
+{{/*
+  Custom navbar — site redesign.
+  Overrides the default Hugo Blox navbar at the same path so the theme
+  prefers this local copy (we never edit files in the module cache).
+
+  - Brand: serif "Roohullah Gulzari" + crimson dot.
+  - Links: rendered from site.Menus.main; the CV entry gets the .cv
+    variant (underline, ink colour, opens in a new tab).
+  - Active state: match the link URL against the current page permalink.
+    Hash anchors (#papers, #contact) are resolved client-side by the
+    scroll-spy script added in Section 9.
+*/}}
+
+{{ $branding := partialCached "functions/get_branding" . "branding" }}
+{{- $navbar_title := site.Params.hugoblox.header.title | default $branding.name -}}
+{{ $currentPage := . }}
+{{ $pageURL := $currentPage.Permalink | absLangURL }}
+
+<div class="rgx-scope">
+  <header class="site" id="site-header">
+    <div class="wrap">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="{{ site.Home.RelPermalink }}">
+          <span class="dot" aria-hidden="true"></span>{{ $navbar_title }}
+        </a>
+
+        <ul>
+          {{ range site.Menus.main }}
+            {{ $url := .URL }}
+            {{ $absURL := $url | absLangURL }}
+
+            {{/* Detect CV / PDF links so they get the underlined variant and open in a new tab */}}
+            {{ $isCV := or
+              (hasSuffix (lower $url) ".pdf")
+              (in (lower .Name) "cv") }}
+
+            {{/* Active if the menu URL exactly matches the current page, OR (on the home page) if the link is a hash anchor into the current page. */}}
+            {{ $isHomeHash := and (hasPrefix $url "/#") ($currentPage.IsHome) }}
+            {{ $active := or (eq $absURL $pageURL) $isHomeHash }}
+
+            {{/* Stable data-target attribute (e.g. "papers", "contact") so the scroll-spy JS can update active state on scroll. */}}
+            {{ $target := "" }}
+            {{ if hasPrefix $url "/#" }}
+              {{ $target = strings.TrimPrefix "/#" $url }}
+            {{ else if hasPrefix $url "#" }}
+              {{ $target = strings.TrimPrefix "#" $url }}
+            {{ end }}
+
+            <li>
+              <a
+                href="{{ $url }}"
+                {{ if $isCV }}class="cv" target="_blank" rel="noopener"{{ else if $active }}class="active"{{ end }}
+                {{ with $target }}data-target="{{ . }}"{{ end }}
+              >
+                {{ .Name }}{{ if $isCV }} ↗{{ end }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>

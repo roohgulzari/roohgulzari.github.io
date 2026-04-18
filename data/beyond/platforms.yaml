@@ -1,0 +1,43 @@
+# Learning platforms & tools
+# Each entry renders as a .item on the Beyond Research page.
+# Delete all entries to hide the Platforms group.
+
+items:
+  - title: "Reflect — a lesson-planning & reflection tool for low-bandwidth classrooms"
+    role: "**Designer & research lead** · built with CERP Pakistan · used by 180+ teachers"
+    desc: "An Android-first tool that pairs *lesson planning with end-of-day reflection prompts*. Designed to work on 2G, in Urdu and English, across government and low-fee private schools."
+    tags:
+      - label: "Android"
+      - label: "Urdu / English"
+      - label: "Offline-first"
+    media:
+      overlay: "Platform"
+      placeholder: "Product screenshot"
+    year: "2023"
+    where: "CERP"
+    where_sub: "Lahore, Pakistan"
+    actions:
+      - label: "Case study"
+        arrow: "+"
+        url: "#"
+      - label: "Live demo"
+        arrow: "↗"
+        url: "#"
+
+  - title: "SMS-nudge dashboard for parental engagement programs"
+    role: "**Co-designer** · deployed across 4 districts"
+    desc: "A monitoring dashboard pairing SMS nudge campaigns with school-level attendance data — used to A/B test message copy and cadence on a rolling weekly basis."
+    tags:
+      - label: "Dashboard"
+      - label: "SMS"
+      - label: "A/B test"
+    media:
+      overlay: "Platform"
+      placeholder: "Dashboard screenshot"
+    year: "2022"
+    where: "CERP"
+    where_sub: "Punjab, Pakistan"
+    actions:
+      - label: "Case study"
+        arrow: "+"
+        url: "#"

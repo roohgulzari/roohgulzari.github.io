@@ -1,0 +1,27 @@
+{{/*
+  Custom site footer for the redesign.
+
+  Emits <footer class="site">…</footer> inside .rgx-scope so the tokens
+  and typography from custom.scss apply. Left: copyright line. Right:
+  auto-updated "Last updated" + Back to top link. A small attribution
+  line sits beneath, keeping the Hugo Blox open-source credit intact.
+*/}}
+
+{{ $identityName := site.Params.hugoblox.identity.name | default "Roohullah Gulzari" }}
+{{ $identityOrg := site.Params.hugoblox.identity.organization | default "" }}
+{{ $year := now.Format "2006" }}
+{{ $lastUpdated := now.Format "January 2006" }}
+
+<div class="rgx-scope">
+  <footer class="site">
+    <div class="wrap">
+      <div class="row">
+        <span>© {{ $year }} {{ $identityName }}{{ with $identityOrg }} · {{ . }}{{ end }}</span>
+        <span>Last updated {{ $lastUpdated }} · <a href="#top">Back to top ↑</a></span>
+      </div>
+      <div class="attribution">
+        Built with <a href="https://hugoblox.com" target="_blank" rel="noopener">Hugo Blox</a>.
+      </div>
+    </div>
+  </footer>
+</div>

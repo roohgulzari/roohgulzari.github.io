@@ -1,0 +1,67 @@
+{{/*
+  teaching-editorial — Teaching section for the redesign.
+
+  content (front matter):
+    num:      section number label (e.g. "03 / Teaching")
+    heading:  serif H2
+    courses:  list of courses, each with:
+      code:     course code shown in crimson mono (e.g. "S290")
+      title:    main serif title
+      subtitle: optional short description under the title
+      role:     plain-sans role (e.g. "Teaching Fellow")
+      term:     mono UPPERCASE term (e.g. "Spring 2025")
+    note:     markdown; rendered in the crimson-bordered note box
+*/}}
+
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+{{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+
+{{ $num := index $content "num" | default "03 / Teaching" }}
+{{ $heading := index $content "heading" | default "Courses & teaching at HGSE." }}
+{{ $courses := index $content "courses" }}
+{{ if not (reflect.IsSlice $courses) }}{{ $courses = slice }}{{ end }}
+{{ $note := index $content "note" | default "" }}
+
+<div class="rgx-scope">
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num">{{ $num }}</span>
+        <h2>{{ $heading }}</h2>
+      </div>
+
+      <div class="teaching-grid">
+        <div></div>
+
+        <div>
+          {{ if $courses }}
+            <div class="teaching-list">
+              {{ range $courses }}
+                {{ $code := index . "code" | default "" }}
+                {{ $title := index . "title" | default "" }}
+                {{ $subtitle := index . "subtitle" | default "" }}
+                {{ $role := index . "role" | default "" }}
+                {{ $term := index . "term" | default "" }}
+                <div class="course">
+                  <div class="code">{{ $code }}</div>
+                  <div>
+                    <div class="title">{{ $title }}</div>
+                    {{ with $subtitle }}<div class="title-sub">{{ . }}</div>{{ end }}
+                  </div>
+                  <div class="role">{{ $role }}</div>
+                  <div class="term">{{ $term }}</div>
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ with $note }}
+            <div class="teaching-note">{{ . | $page.RenderString }}</div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -22,6 +22,22 @@ featured: false
 
 links: []
 
+extras:
+  status: "Draft"
+  status_kind: "draft"
+  display_tags:
+    - "Governance"
+    - "Policy evaluation"
+    - "Pakistan"
+    - "Admin data"
+  actions:
+    - label: "Abstract"
+      arrow: "+"
+      url: "#"
+    - label: "Notify me"
+      arrow: "↗"
+      url: "#"
+
 image:
   focal_point: ""
   preview_only: false

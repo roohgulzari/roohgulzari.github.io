@@ -25,6 +25,26 @@ featured: false
 
 links: []
 
+extras:
+  status: "In progress"
+  status_kind: "active"
+  featured_tag: "Job-market paper"
+  display_tags:
+    - "Teacher PD"
+    - "RCT"
+    - "Pakistan"
+    - "K–12"
+  actions:
+    - label: "Draft"
+      arrow: "PDF →"
+      url: ""
+    - label: "Abstract"
+      arrow: "+"
+      url: "#"
+    - label: "BibTeX"
+      arrow: "↗"
+      url: ""
+
 image:
   focal_point: ""
   preview_only: false

@@ -23,6 +23,25 @@ featured: false
 
 links: []
 
+extras:
+  status: "Working paper"
+  status_kind: "active"
+  display_tags:
+    - "Parental engagement"
+    - "Learning loss"
+    - "Pakistan"
+    - "Quasi-experimental"
+  actions:
+    - label: "Draft"
+      arrow: "PDF →"
+      url: ""
+    - label: "Abstract"
+      arrow: "+"
+      url: "#"
+    - label: "BibTeX"
+      arrow: "↗"
+      url: ""
+
 image:
   focal_point: ""
   preview_only: false

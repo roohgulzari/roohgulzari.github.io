@@ -1,0 +1,80 @@
+# Talks & presentations
+# Each entry renders as a .item on the Beyond Research page.
+# Edit freely — delete all entries to hide the Talks group.
+
+items:
+  - title: "What teachers actually need — notes from 180 classrooms in Pakistan"
+    role: "**TEDx speaker** · 14 min · recorded at TEDxLahore"
+    desc: "A short, personal talk on why most teacher training *misses the point* — and what a year of classroom observation taught me about the gap between policy and practice."
+    tags:
+      - label: "TED Talk"
+        crimson: true
+      - label: "Education"
+      - label: "Pakistan"
+    media:
+      overlay: "TED"
+      overlay_crimson: true
+      play: true
+      placeholder: "Video thumbnail"
+    year: "2024"
+    where: "TEDxLahore"
+    where_sub: "Lahore, Pakistan"
+    actions:
+      - label: "Watch"
+        arrow: "↗"
+        url: "#"
+      - label: "Transcript"
+        arrow: "+"
+        url: "#"
+
+  - title: "Reflective learning at scale: lessons from a teacher PD RCT"
+    role: "Invited talk · **APPAM Annual Conference**"
+    desc: "Early findings from a 180-school cluster-randomized trial, and what the effect heterogeneity tells us about designing PD for early-career vs. veteran teachers."
+    tags:
+      - label: "APPAM"
+      - label: "Teacher PD"
+      - label: "RCT"
+    media:
+      overlay: "Keynote"
+      placeholder: "Slide deck / stage photo"
+    year: "2025"
+    where: "APPAM"
+    where_sub: "Washington, DC"
+    actions:
+      - label: "Slides"
+        arrow: "PDF →"
+        url: ""
+
+  - title: "Parental engagement after the closures: what worked, what didn't"
+    role: "Panelist · **CIES — Comparative & International Education Society**"
+    desc: "Panel discussion on low-cost strategies for re-engaging parents after COVID school closures, drawing on a quasi-experimental evaluation in Punjab."
+    tags:
+      - label: "CIES"
+      - label: "Parental engagement"
+    media:
+      overlay: "Panel"
+      placeholder: "Panel photo"
+    year: "2025"
+    where: "CIES"
+    where_sub: "Chicago, IL"
+    actions:
+      - label: "Program"
+        arrow: "↗"
+        url: "#"
+
+  - title: "School reconfiguration policies and learning outcomes"
+    role: "Contributed talk · **NEUDC — North East Universities Development Consortium**"
+    desc: "A first look at five years of provincial school-merger data and what it implies for how we evaluate mid-scale governance reforms."
+    tags:
+      - label: "NEUDC"
+      - label: "Governance"
+    media:
+      overlay: "Talk"
+      placeholder: "Conference photo"
+    year: "2024"
+    where: "Yale"
+    where_sub: "New Haven, CT"
+    actions:
+      - label: "Slides"
+        arrow: "PDF →"
+        url: ""

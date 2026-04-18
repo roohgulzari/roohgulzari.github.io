@@ -1,7 +1,7 @@
 # Navigation Links
 main:
   - name: About
-    url: /
+    url: /#top
     weight: 10
   - name: Research
     url: /#papers
@@ -9,6 +9,9 @@ main:
   - name: Teaching
     url: /teaching/
     weight: 30
+  - name: Beyond Research
+    url: /beyond-research/
+    weight: 35
   - name: CV
     url: uploads/cv.pdf
     weight: 40

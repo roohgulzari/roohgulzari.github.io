@@ -1,0 +1,52 @@
+{{/*
+  beyond-hero — page hero for the Beyond Research page.
+
+  content (front matter):
+    kicker:  mono crimson kicker
+    heading: serif H1; *emphasis* in markdown becomes crimson italic
+    lede:    markdown body; *emphasis* becomes serif italic
+    stats:   list of { n, sup, lbl } — up to 4 stat blocks
+
+  Renders <section class="pagehero"> inside .rgx-scope > .wrap.
+*/}}
+
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+{{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+
+{{ $kicker := index $content "kicker" | default "Beyond Research" }}
+{{ $heading := index $content "heading" | default "" }}
+{{ $lede := index $content "lede" | default "" }}
+{{ $stats := index $content "stats" }}
+{{ if not (reflect.IsSlice $stats) }}{{ $stats = slice }}{{ end }}
+
+<div class="rgx-scope">
+  <section class="pagehero">
+    <div class="wrap">
+      {{ with $kicker }}<div class="kicker">{{ . }}</div>{{ end }}
+
+      {{ with $heading }}
+        <h1>{{ . | $page.RenderString (dict "display" "inline") }}</h1>
+      {{ end }}
+
+      {{ with $lede }}
+        <p class="lede">{{ . | $page.RenderString (dict "display" "inline") }}</p>
+      {{ end }}
+
+      {{ if $stats }}
+        <div class="stats">
+          {{ range $stats }}
+            {{ $n := index . "n" | default "" }}
+            {{ $sup := index . "sup" | default "" }}
+            {{ $lbl := index . "lbl" | default "" }}
+            <div class="stat">
+              <div class="n">{{ $n }}{{ with $sup }}<sup>{{ . }}</sup>{{ end }}</div>
+              <div class="lbl">{{ $lbl }}</div>
+            </div>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+  </section>
+</div>

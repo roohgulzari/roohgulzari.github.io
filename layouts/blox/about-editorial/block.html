@@ -1,0 +1,75 @@
+{{/*
+  about-editorial — About section for the redesign.
+
+  Three-column grid on desktop:
+    [spacer 220px] [prose] [sidebars 280px]
+
+  The outer `<section id="...">` is provided by parse_block_v3 via the
+  block's top-level `id:`. This block renders the inner `.section` /
+  `.wrap` / `.section-head` / `.about` scaffolding.
+
+  content (front matter):
+    num:       label shown in section head (e.g. "01 / About")
+    heading:   serif H2 (e.g. "What I work on, and how.")
+    body:      markdown body; use *emphasis* for serif italic accents
+    education: list of { where, yr }
+    previously: list of { where, yr }
+*/}}
+
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+{{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+
+{{ $num := index $content "num" | default "01 / About" }}
+{{ $heading := index $content "heading" | default "What I work on, and how." }}
+{{ $body := index $content "body" | default "" }}
+{{ $education := index $content "education" }}
+{{ if not (reflect.IsSlice $education) }}{{ $education = slice }}{{ end }}
+{{ $previously := index $content "previously" }}
+{{ if not (reflect.IsSlice $previously) }}{{ $previously = slice }}{{ end }}
+
+<div class="rgx-scope">
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num">{{ $num }}</span>
+        <h2>{{ $heading }}</h2>
+      </div>
+
+      <div class="about">
+        <div></div>
+
+        <div class="about-prose">
+          {{ with $body }}{{ . | $page.RenderString }}{{ end }}
+        </div>
+
+        <div>
+          {{ if $education }}
+            <div class="about-sidebar">
+              <h4>Education</h4>
+              {{ range $education }}
+                <div class="item">
+                  <span class="where">{{ .where }}</span>
+                  <span class="yr">{{ .yr }}</span>
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ if $previously }}
+            <div class="about-sidebar">
+              <h4>Previously</h4>
+              {{ range $previously }}
+                <div class="item">
+                  <span class="where">{{ .where }}</span>
+                  <span class="yr">{{ .yr }}</span>
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

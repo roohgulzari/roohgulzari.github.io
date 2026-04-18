@@ -1,0 +1,53 @@
+{{/*
+  contact-editorial — Contact section for the redesign.
+
+  content (front matter):
+    num:      section number label (e.g. "04 / Contact")
+    heading:  serif H2
+    lead:     markdown; rendered as large-serif contact-lead paragraph
+    cells:    list of { h, body } — body is markdown. Renders as the
+              two-column .contact-grid on desktop, one column on mobile.
+*/}}
+
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $content := $block.content }}
+{{ if not (reflect.IsMap $content) }}{{ $content = dict }}{{ end }}
+
+{{ $num := index $content "num" | default "04 / Contact" }}
+{{ $heading := index $content "heading" | default "Get in touch." }}
+{{ $lead := index $content "lead" | default "" }}
+{{ $cells := index $content "cells" }}
+{{ if not (reflect.IsSlice $cells) }}{{ $cells = slice }}{{ end }}
+
+<div class="rgx-scope">
+  <div class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num">{{ $num }}</span>
+        <h2>{{ $heading }}</h2>
+      </div>
+
+      <div class="contact">
+        <div></div>
+
+        {{ with $lead }}
+          <p class="contact-lead">{{ . | $page.RenderString }}</p>
+        {{ end }}
+
+        {{ if $cells }}
+          <div class="contact-grid">
+            {{ range $cells }}
+              {{ $h := index . "h" | default "" }}
+              {{ $body := index . "body" | default "" }}
+              <div>
+                {{ with $h }}<h4>{{ . }}</h4>{{ end }}
+                {{ with $body }}<p>{{ . | $page.RenderString }}</p>{{ end }}
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>

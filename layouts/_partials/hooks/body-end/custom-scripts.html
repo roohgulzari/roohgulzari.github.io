@@ -1,0 +1,10 @@
+{{/*
+  Custom JS for the redesign (chip filter, scroll-spy, view toggle).
+  Pipes assets/js/site.js through the asset pipeline, minifies,
+  fingerprints, and emits a deferred <script>.
+*/}}
+
+{{ with resources.Get "js/site.js" }}
+  {{ $js := . | minify | fingerprint }}
+  <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ end }}
