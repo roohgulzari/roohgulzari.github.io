@@ -24,7 +24,7 @@ featured: false
 links: []
 
 extras:
-  status: "Working paper"
+  status: "In progress"
   status_kind: "active"
   display_tags:
     - "Parental engagement"
