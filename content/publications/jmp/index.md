@@ -28,7 +28,6 @@ links: []
 extras:
   status: "In progress"
   status_kind: "active"
-  featured_tag: "Job-market paper"
   display_tags:
     - "Teacher PD"
     - "RCT"

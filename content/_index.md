@@ -45,16 +45,16 @@ sections:
         Before Harvard, I managed large-scale education research at CERP Pakistan with Professor Asim Khwaja and worked on education campaigns and M&E across Pakistan. I hold a Master of Public Administration from Central European University and a B.Sc. in Mechanical Engineering from UET Lahore.
       education:
         - where: 'PhD · Harvard GSE'
-          yr: '2023 — Present'
+          yr: '2022 — Present'
         - where: 'MPA · CEU'
-          yr: '2018'
+          yr: '2019'
         - where: 'B.Sc. Mech. Eng. · UET Lahore'
           yr: '2014'
       previously:
-        - where: 'CERP Pakistan — w/ A. Khwaja'
-          yr: '2019 — 23'
-        - where: 'Education M&E · Pakistan'
-          yr: '2015 — 19'
+        - where: 'CERP Pakistan — w/ Prod. Asim Khwaja'
+          yr: '2019 — 22'
+        - where: 'Alif Ailaan (DfiD) · Pakistan'
+          yr: '2016 — 17'
 
   - block: publications-research
     id: papers
@@ -69,8 +69,6 @@ sections:
         featured_only: false
       chips:
         - label: 'All'
-        - label: 'Job-market'
-          tag: 'Job-market paper'
         - label: 'Teacher PD'
           tag: 'Teacher PD'
         - label: 'Parental'
@@ -115,7 +113,7 @@ sections:
           role: 'Teaching Fellow'
           term: 'Fall 2023'
       note: |-
-        I teach sections in quantitative methods and education policy at HGSE. I'm happy to share *problem sets, slides, and R notebooks* with students who took the course — reach out by email. [See the full teaching page](/teaching/).
+         I'm happy to share course materials with students who took the course — reach out by email. [See the full teaching page](/teaching/).
 
   - block: contact-editorial
     id: contact
@@ -136,5 +134,5 @@ sections:
         - h: 'Mentoring'
           body: 'Open to chatting with students from Pakistan considering a PhD in economics or education.'
         - h: 'Press & speaking'
-          body: 'For media or invited talks, email first with a short description.'
+          body: ''
 ---
