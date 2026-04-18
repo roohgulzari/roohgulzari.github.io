@@ -1,6 +1,9 @@
 ---
 title: Teaching
 summary: Teaching experience at Harvard Graduate School of Education.
+build:
+  render: never
+  list: never
 ---
 
 ## Teaching Fellow, Harvard Graduate School of Education

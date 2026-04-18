@@ -113,7 +113,7 @@ sections:
           role: 'Teaching Fellow'
           term: 'Fall 2023'
       note: |-
-         I'm happy to share course materials with students who took the course — reach out by email. [See the full teaching page](/teaching/).
+         I'm happy to share course materials with students who took the course — reach out by email.
 
   - block: contact-editorial
     id: contact
