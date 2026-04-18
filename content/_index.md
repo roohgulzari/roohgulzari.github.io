@@ -51,7 +51,7 @@ sections:
         - where: 'B.Sc. Mech. Eng. · UET Lahore'
           yr: '2014'
       previously:
-        - where: 'CERP Pakistan — w/ Prod. Asim Khwaja'
+        - where: 'CERP Pakistan — w/ Prof. Asim Khwaja'
           yr: '2019 — 22'
         - where: 'Alif Ailaan (DfiD) · Pakistan'
           yr: '2016 — 17'
