@@ -38,9 +38,6 @@ extras:
     - label: "Abstract"
       arrow: "+"
       url: "#"
-    - label: "BibTeX"
-      arrow: "↗"
-      url: ""
 
 image:
   focal_point: ""
