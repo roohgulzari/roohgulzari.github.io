@@ -15,7 +15,7 @@ sections:
       role: 'PhD Candidate'
       organization: 'Harvard Graduate School of Education'
       summary: |
-        I use *applied microeconomics* to study what makes teachers, schools, and parents effective in *low- and middle-income countries* — with current fieldwork across Pakistan on teacher training, governance, and parental engagement.
+        I use applied microeconomics to study what makes teachers, schools, and parents effective in *low- and middle-income countries* — with current fieldwork across Pakistan on teacher training, governance, and parental engagement.
       actions:
         - text: 'Read the research'
           url: '#papers'
@@ -42,7 +42,7 @@ sections:
 
         I'm particularly interested in how *teacher professional development programs and policies* can improve teaching quality and student learning outcomes at the K–12 level. My current work examines teacher training interventions, school governance reforms, and parental engagement strategies in Pakistan, using experimental and quasi-experimental methods to identify what works, for whom, and why.
 
-        Before Harvard, I managed large-scale education research at CERP Pakistan with Professor Asim Khwaja and worked on education campaigns and M&E across Pakistan. I hold a Master of Public Administration from Central European University and a B.Sc. in Mechanical Engineering from UET Lahore.
+        Before Harvard, I managed a large-scale education research portfolio at CERP Pakistan (PI: Professor Asim Khwaja) and worked on education campaigns across Pakistan. I hold a Master of Public Administration from Central European University and a B.Sc. in Mechanical Engineering from UET Lahore.
       education:
         - where: 'PhD · Harvard GSE'
           yr: '2022 — Present'
